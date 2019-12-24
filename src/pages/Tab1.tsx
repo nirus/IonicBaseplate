@@ -18,6 +18,7 @@ import {
 import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
 import './Tab1.css';
+import './style.scss';
 
 const Tab1: React.FC = () => {
   return (
@@ -35,7 +36,7 @@ const Tab1: React.FC = () => {
             <IonCardTitle>Welcome to Ionic</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <p>
+            <p className={'scss-test'}>
               Now that your app has been created, you'll want to start building out features and
               components. Check out some of the resources below for next steps.
             </p>
