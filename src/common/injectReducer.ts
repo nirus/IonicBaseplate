@@ -12,9 +12,9 @@ import { StoreParameters } from './checkStore';
  *
  */
 const useInjectReducer = ({ key, reducer } : { key: string, reducer: () => void }) => {
-  const context : ReactReduxContextValue = useContext(ReactReduxContext);
+  const context : ReactReduxContextValue<StoreParameters> = useContext(ReactReduxContext);
   useEffect(() => {
-    getInjectors(context.store as unknown as StoreParameters).injectReducer(key, reducer);
+    getInjectors(context.store as StoreParameters).injectReducer(key, reducer);
   }, []);
 };
 

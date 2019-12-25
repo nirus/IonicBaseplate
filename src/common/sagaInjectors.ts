@@ -1,10 +1,8 @@
 import invariant from 'invariant';
 import { isEmpty, isFunction, isString, conformsTo } from 'lodash';
-
 import checkStore, { StoreParameters } from './checkStore';
-import { APP_EVENTS } from './constants';
+import { APP_EVENTS, SagaDescribe } from './constants';
 
-interface Descriptor { mode?: APP_EVENTS, saga?: ()=> void }
 
 const allowedModes = [APP_EVENTS.RESTART_ON_REMOUNT, APP_EVENTS.DAEMON, APP_EVENTS.ONCE_TILL_UNMOUNT];
 
@@ -14,8 +12,8 @@ const checkKey = (key: any) =>
     '(src/common...) injectSaga: Expected `key` to be a non empty string',
   );
 
-const checkDescriptor = (descriptor: Descriptor) => {
-  const shape = {
+const checkDescriptor = (descriptor: SagaDescribe) => {
+  const shape : any = {
     saga: isFunction,
     mode: (mode: APP_EVENTS) => isString(mode) && allowedModes.includes(mode),
   };
@@ -26,18 +24,18 @@ const checkDescriptor = (descriptor: Descriptor) => {
 };
 
 export function injectSagaFactory(store: StoreParameters, isValid: boolean) {
-  return function injectSaga(key: string, descriptor : Descriptor = {}, args: any) {
+  return function injectSaga(key: string, descriptor : SagaDescribe | any = {}, args?: any) {
     if (!isValid) checkStore(store);
 
     const newDescriptor = {
       ...descriptor,
       mode: descriptor.mode || APP_EVENTS.DAEMON,
     };
-    const { saga, mode } = newDescriptor;
+    const { saga, mode }: SagaDescribe = newDescriptor;
 
     checkKey(key);
     checkDescriptor(newDescriptor);
-
+  
     let hasSaga = Reflect.has(store.injectedSagas, key);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -53,12 +51,10 @@ export function injectSagaFactory(store: StoreParameters, isValid: boolean) {
       !hasSaga ||
       (hasSaga && mode !== APP_EVENTS.DAEMON && mode !== APP_EVENTS.ONCE_TILL_UNMOUNT)
     ) {
-      /* eslint-disable no-param-reassign */
       store.injectedSagas[key] = {
         ...newDescriptor,
         task: store.runSaga(saga, args),
       };
-      /* eslint-enable no-param-reassign */
     }
   };
 }
@@ -76,7 +72,7 @@ export function ejectSagaFactory(store: StoreParameters, isValid: boolean) {
         // Clean up in production; in development we need `descriptor.saga` for hot reloading
         if (process.env.NODE_ENV === 'production') {
           // Need some value to be able to detect `ONCE_TILL_UNMOUNT` sagas in `injectSaga`
-          store.injectedSagas[key] = 'done'; // eslint-disable-line no-param-reassign
+          store.injectedSagas[key] = 'done';
         }
       }
     }

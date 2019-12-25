@@ -1,3 +1,6 @@
+/**
+ * This is the main state tree
+ */
 import produce from 'immer';
 import { APP_CONST, APP_ACTION } from './common/constants';
 
@@ -9,8 +12,14 @@ export const initialState = {
   userData: {
     repositories: false,
   },
+  welcome: 'REACT BASEPLATE CLi'
 };
 
+/**
+ * Main app state or Root state tree
+ * @param state 
+ * @param action 
+ */
 const appReducer = (state = initialState, action: APP_ACTION) =>
   produce(state, draft => {
     switch (action.type) {

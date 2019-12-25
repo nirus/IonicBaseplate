@@ -1,22 +1,20 @@
 import { conformsTo, isFunction, isObject } from 'lodash';
 import invariant from 'invariant';
-import { Reducer } from 'redux';
+import { Reducer, Store } from 'redux';
+import { SagaDescribe } from './constants';
 
 
-export interface StoreParameters {
-  dispatch: ()=> void,
-  subscribe: ()=> void,
-  getState: ()=> object,
+export interface StoreParameters extends Store {
   replaceReducer: (param: Reducer)=> void,
   runSaga: (saga:()=> void, arg: any)=> void,
-  injectedReducers: {[key:string]: ()=> void},
-  injectedSagas: object,
+  injectedReducers: {[key:string]: (value?: any) => any},
+  injectedSagas: {[key: string]: SagaDescribe | any },
 }
 /**
  * Validate the shape of redux store
  */
-export default function checkStore(store: StoreParameters): void {
-  const shape = {
+export default function checkStore(store: StoreParameters) {
+  const shape: StoreParameters | any = {
     dispatch: isFunction,
     subscribe: isFunction,
     getState: isFunction,

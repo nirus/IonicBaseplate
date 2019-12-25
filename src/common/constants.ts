@@ -1,3 +1,6 @@
+import { Task } from 'redux-saga';
+
+export interface SagaDescribe { mode?: APP_EVENTS, saga: ()=> void, task: Task }
 
 export enum APP_CONST {
   LOAD_REPOS,

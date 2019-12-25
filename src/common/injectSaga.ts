@@ -1,12 +1,13 @@
 import React from 'react';
-import { ReactReduxContext } from 'react-redux';
+import { ReactReduxContext, ReactReduxContextValue } from 'react-redux';
 import getInjectors from './sagaInjectors';
+import { StoreParameters } from './checkStore';
 
 
 const useInjectSaga = ({ key, saga, mode }: {key: string, saga: ()=> void, mode: string}) => {
-  const context = React.useContext(ReactReduxContext);
+  const context:ReactReduxContextValue<StoreParameters> = React.useContext(ReactReduxContext);
   React.useEffect(() => {
-    const injectors = getInjectors(context.store);
+    const injectors = getInjectors(context.store as StoreParameters);
     injectors.injectSaga(key, { saga, mode });
 
     return () => {
