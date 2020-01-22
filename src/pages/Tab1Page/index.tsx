@@ -20,26 +20,25 @@ import {
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { useInjectReducer } from 'src/common/injectReducer';
-// import { useInjectSaga } from 'src/common/injectSaga';
-import { makeSelectCounter } from './selectors';
-import { incrementAction } from './actions';
+import injector from 'src/common/injectorWrap';
+import { makeSelectCounter, makeSelectCountries } from './selectors';
+import { incrementAction, getCountriesAction } from './actions';
 
-import { book, build, colorFill, grid } from 'ionicons/icons';
+import { star } from 'ionicons/icons';
 import React, { memo } from 'react';
 import './Tab1.css';
 import './style.scss';
 import { PAGE_NAME } from './constants';
-import reducer from './reducer';
-import { SubState, InferMappedProps } from './types';
+import tab1Reducer from './reducer';
+import tab1Saga from './saga';
+import { InferMappedProps } from './types';
 
-const Tab1: React.FC<InferMappedProps> = (props: InferMappedProps) => {
-  useInjectReducer({ key: PAGE_NAME, reducer: reducer });
+const Tab1: React.FC<InferMappedProps> = ({eProps, ...props} : InferMappedProps) => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab One</IonTitle>
+          <IonTitle>Redux Capability</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -47,40 +46,46 @@ const Tab1: React.FC<InferMappedProps> = (props: InferMappedProps) => {
           <img src="/assets/shapes.svg" alt="" />
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
-            <IonCardTitle>Welcome to Ionic React + Redux</IonCardTitle>
+            <IonCardTitle>Welcome to Baseplate Framework</IonCardTitle>
+            <IonCardSubtitle>Ionic + React + Redux + Saga</IonCardSubtitle>
+          </IonCardHeader>
+        </IonCard>
+
+        <IonCard className="welcome-card">
+          <IonCardHeader>
+            <IonCardSubtitle>Redux data flow showcase</IonCardSubtitle>
+            <IonCardTitle>{props.counter}</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <p className={'scss-test'}>
-              This is a sample app to demonstrate the Redux integrated with the Ionic app
-            </p>
-            <p>{props.counter} </p>
-            <div>
-              <IonButton expand="full" onClick={() => props.onCount({ counter: props.counter + 1 })} color="primary">Count</IonButton>
-            </div>
+            <IonButton
+              expand="full"
+              onClick={() => eProps.onCount({ counter: props.counter + 1 })}
+              color="primary">Click to Count</IonButton>
           </IonCardContent>
         </IonCard>
 
-        <IonList lines="none">
-          <IonListHeader>
-            <IonLabel>Resources</IonLabel>
-          </IonListHeader>
-          <IonItem href="https://ionicframework.com/docs/" target="_blank">
-            <IonIcon slot="start" color="medium" icon={book} />
-            <IonLabel>Ionic Documentation</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/building/scaffolding" target="_blank">
-            <IonIcon slot="start" color="medium" icon={build} />
-            <IonLabel>Scaffold Out Your App</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/layout/structure" target="_blank">
-            <IonIcon slot="start" color="medium" icon={grid} />
-            <IonLabel>Change Your App Layout</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/theming/basics" target="_blank">
-            <IonIcon slot="start" color="medium" icon={colorFill} />
-            <IonLabel>Theme Your App</IonLabel>
-          </IonItem>
-        </IonList>
+        <IonCard className="welcome-card">
+          <IonCardHeader>
+            <IonCardSubtitle>Redux-Saga data flow showcase</IonCardSubtitle>
+            <IonButton
+              expand="full"
+              onClick={() => eProps.getAllCountries()}
+              color="primary">Load Countries</IonButton>
+          </IonCardHeader>
+          <IonCardContent>
+            <IonList lines="none">
+              <IonListHeader>List of Countries</IonListHeader>
+              {Object.entries(props.countries).map(([, value], index) =>
+                (
+                  <IonItem key={index} href="https://ionicframework.com/docs/" target="_blank">
+                    <IonIcon slot="start" color="medium" icon={star} />
+                    <IonLabel>{value as string}</IonLabel>
+                  </IonItem>
+                )
+              )}
+            </IonList>
+          </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );
@@ -88,13 +93,28 @@ const Tab1: React.FC<InferMappedProps> = (props: InferMappedProps) => {
 
 export const mapStateToProps = createStructuredSelector({
   counter: makeSelectCounter(),
+  countries: makeSelectCountries(),
 });
 
 export function mapDispatchToProps(dispatch: any) {
   return {
-    onCount: (count: SubState) => dispatch(incrementAction(count)),
+    eProps: {
+      /** dispatch for counter to increment */
+      onCount: (count: { counter: number }) => dispatch(incrementAction(count)),
+      /** dispatch for get all countries */
+      getAllCountries: () => dispatch(getCountriesAction())
+    }
   };
 }
+
+const withInjectedMode = injector(
+  Tab1,
+  {
+    key: PAGE_NAME,
+    reducer: tab1Reducer,
+    saga: tab1Saga
+  }
+);
 
 const withConnect = connect(
   mapStateToProps,
@@ -104,6 +124,6 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(Tab1) as React.ComponentType<InferMappedProps>;
+)(withInjectedMode) as React.ComponentType<InferMappedProps>;
 
 // export default Tab1;

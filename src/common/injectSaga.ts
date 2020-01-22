@@ -4,7 +4,7 @@ import getInjectors from './sagaInjectors';
 import { StoreParameters } from './models';
 
 
-const useInjectSaga = ({ key, saga, mode }: {key: string, saga: ()=> void, mode: string}) => {
+const useInjectSaga = ({ key, saga, mode }: {key: string, saga: () => void | null, mode?: string}) => {
   const context:ReactReduxContextValue<StoreParameters> = React.useContext(ReactReduxContext);
   React.useEffect(() => {
     const injectors = getInjectors(context.store as StoreParameters);
@@ -13,6 +13,7 @@ const useInjectSaga = ({ key, saga, mode }: {key: string, saga: ()=> void, mode:
     return () => {
       injectors.ejectSaga(key);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

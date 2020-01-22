@@ -18,7 +18,7 @@ export interface APP_ACTION {
  */
 export type ActionTags<T, U> = {
     type: T;
-    payLoad: { [key: string]: any } | U;
+    payLoad: { [key: string]: any } | U ;
     meta?: { [key: string]: any } | undefined;
 };
 
