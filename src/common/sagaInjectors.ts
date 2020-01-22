@@ -1,7 +1,8 @@
 import invariant from 'invariant';
 import { isEmpty, isFunction, isString, conformsTo } from 'lodash';
-import checkStore, { StoreParameters } from './checkStore';
-import { APP_EVENTS, SagaDescribe } from './constants';
+import checkStore from './checkStore';
+import { StoreParameters, SagaDescribe } from './models';
+import { APP_EVENTS } from './constants';
 
 
 const allowedModes = [APP_EVENTS.RESTART_ON_REMOUNT, APP_EVENTS.DAEMON, APP_EVENTS.ONCE_TILL_UNMOUNT];

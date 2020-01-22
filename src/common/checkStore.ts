@@ -1,15 +1,9 @@
 import { conformsTo, isFunction, isObject } from 'lodash';
 import invariant from 'invariant';
-import { Reducer, Store } from 'redux';
-import { SagaDescribe } from './constants';
+import { StoreParameters } from './models';
 
 
-export interface StoreParameters extends Store {
-  replaceReducer: (param: Reducer)=> void,
-  runSaga: (saga:()=> void, arg: any)=> void,
-  injectedReducers: {[key:string]: (value?: any) => any},
-  injectedSagas: {[key: string]: SagaDescribe | any },
-}
+
 /**
  * Validate the shape of redux store
  */

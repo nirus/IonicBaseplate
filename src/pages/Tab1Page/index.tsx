@@ -13,14 +13,28 @@ import {
   IonListHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonButton
 } from '@ionic/react';
+
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import { useInjectReducer } from 'src/common/injectReducer';
+// import { useInjectSaga } from 'src/common/injectSaga';
+import { makeSelectCounter } from './selectors';
+import { incrementAction } from './actions';
+
 import { book, build, colorFill, grid } from 'ionicons/icons';
-import React from 'react';
+import React, { memo } from 'react';
 import './Tab1.css';
 import './style.scss';
+import { PAGE_NAME } from './constants';
+import reducer from './reducer';
+import { SubState, InferMappedProps } from './types';
 
-const Tab1: React.FC = () => {
+const Tab1: React.FC<InferMappedProps> = (props: InferMappedProps) => {
+  useInjectReducer({ key: PAGE_NAME, reducer: reducer });
   return (
     <IonPage>
       <IonHeader>
@@ -33,13 +47,16 @@ const Tab1: React.FC = () => {
           <img src="/assets/shapes.svg" alt="" />
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
-            <IonCardTitle>Welcome to Ionic</IonCardTitle>
+            <IonCardTitle>Welcome to Ionic React + Redux</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
             <p className={'scss-test'}>
-              Now that your app has been created, you'll want to start building out features and
-              components. Check out some of the resources below for next steps.
+              This is a sample app to demonstrate the Redux integrated with the Ionic app
             </p>
+            <p>{props.counter} </p>
+            <div>
+              <IonButton expand="full" onClick={() => props.onCount({ counter: props.counter + 1 })} color="primary">Count</IonButton>
+            </div>
           </IonCardContent>
         </IonCard>
 
@@ -69,4 +86,24 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export const mapStateToProps = createStructuredSelector({
+  counter: makeSelectCounter(),
+});
+
+export function mapDispatchToProps(dispatch: any) {
+  return {
+    onCount: (count: SubState) => dispatch(incrementAction(count)),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(Tab1) as React.ComponentType<InferMappedProps>;
+
+// export default Tab1;

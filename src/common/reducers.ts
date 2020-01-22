@@ -6,13 +6,14 @@ import { combineReducers, Reducer } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import history from './history';
 import globalReducer from '../App.reducers';
+import { ActionTags } from 'src/common/models';
 // import languageProviderReducer from 'containers/LanguageProvider/reducer';
 // TODO: i18n Language should be implemented
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
-export default function createReducer(injectedReducers: {[key:string]: ()=> void} = {}): Reducer {
+export default function createReducer(injectedReducers: {[key:string]: <T>(state: T, actions: ActionTags<any, any>) => any} = {}): Reducer {
   const rootReducer = combineReducers({
     global: globalReducer,
     

@@ -2,7 +2,9 @@
  * This is the main state tree
  */
 import produce from 'immer';
-import { APP_CONST, APP_ACTION } from './common/constants';
+import { APP_ACTION } from './common/models';
+import { APP_CONST } from './common/constants';
+
 
 // The initial state of the App
 export const initialState = {

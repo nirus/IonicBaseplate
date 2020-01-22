@@ -1,0 +1,14 @@
+{
+    "project": "BasePlate",
+    "project-type": "ionic-react",
+    "manual":{
+        "containers":{
+            "folder": "pages",
+            "cli-suffix": "Page"
+        },
+        "components":{
+            "folder":"widgets",
+            "cli-suffix": "Comp"
+        }
+    }
+}

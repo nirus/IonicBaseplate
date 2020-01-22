@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactReduxContext, ReactReduxContextValue } from 'react-redux';
 import getInjectors from './sagaInjectors';
-import { StoreParameters } from './checkStore';
+import { StoreParameters } from './models';
 
 
 const useInjectSaga = ({ key, saga, mode }: {key: string, saga: ()=> void, mode: string}) => {
