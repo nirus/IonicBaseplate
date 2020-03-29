@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 import { SubState } from './types';
-import { PAGE_NAME } from './constants';
+import { NameSpace } from './constants';
 
-const selectTab1 = (state: any): SubState => state[PAGE_NAME] || initialState;
+const selectTab1 = (state: any): SubState => state[NameSpace] || initialState;
 
 const makeSelectCounter = () =>
   createSelector(

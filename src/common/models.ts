@@ -16,8 +16,10 @@ export interface APP_ACTION {
     * @param meta Metadata like listeners, callbacks or any extra info
     * @returns Action created with all parameters
  */
+export type ValueOf<T> = T[keyof T];
+
 export type ActionTags<T, U> = {
-    type: T;
+    type: ValueOf<T>;
     payLoad: { [key: string]: any } | U ;
     meta?: { [key: string]: any } | undefined;
 };

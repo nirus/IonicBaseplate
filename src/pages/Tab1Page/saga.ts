@@ -3,7 +3,7 @@
  */
 
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { API, Tab1Actions } from './constants';
+import { Api, Tab1Actions } from './constants';
 import { countriesLoadAction } from './actions';
 
 import request from 'src/common/request';
@@ -16,7 +16,7 @@ export function* getCountries() {
   // Select username from store  
   try {
     // Call our request helper (see 'utils/request')
-    const countries = yield call(request as any, API.countries);    
+    const countries = yield call(request as any, Api.countries);    
     yield put(countriesLoadAction({ countries }));
   } catch (err) {
     console.error(err);
@@ -31,5 +31,5 @@ export default function* countriesData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
-  yield takeLatest(Tab1Actions.API_GET_COUNTRIES, getCountries);
+  yield takeLatest(Tab1Actions.FETCH_GET_COUNTRIES, getCountries);
 }

@@ -1,0 +1,6 @@
+.scss-test{
+  color: brown;
+  .test-css{
+    color: red($color: #000000);
+  }
+}

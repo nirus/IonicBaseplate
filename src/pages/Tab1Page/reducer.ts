@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { Tab1ActionType } from './types';
 import { Tab1Actions } from './constants';
 import { SubState } from './types';
 import { ActionTags } from 'src/common/models';
@@ -11,11 +12,11 @@ export const initialState = {
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const tab1Reducers = (state = initialState, action: ActionTags<Tab1Actions, SubState>) =>
+const tab1Reducers = (state = initialState, action: ActionTags<Tab1ActionType, SubState>) =>
     produce(state, (draft) => {
         const { payLoad } = action;
         switch (action.type) {
-            case Tab1Actions.COUNT_INCREMENT: {
+            case Tab1Actions.STATE_COUNT_INCREMENT: {
                 draft.counter = payLoad.counter;
                 break;
             }

@@ -5,7 +5,7 @@
  *
  * @return {object}          The parsed JSON from the request
  */
-function parseJSON(response: { status: number; json: () => Promise<any>; }): Promise<any> | null {
+function parseJSON(response: Response): Promise<any> | null {
     if (response.status === 204 || response.status === 205) {
         return null;
     }
@@ -19,7 +19,7 @@ function parseJSON(response: { status: number; json: () => Promise<any>; }): Pro
  *
  * @return {object|undefined} Returns either the response, or throws an error
  */
-function checkStatus(response: any): any {
+function checkStatus(response: Response): any {
     if (response.status >= 200 && response.status < 300) {
         return response;
     }
@@ -37,7 +37,7 @@ function checkStatus(response: any): any {
  *
  * @return {object}           The response data
  */
-export default function request(url: RequestInfo, options: RequestInit | undefined): Promise<any> {
+export default function request(url: RequestInfo, options: RequestInit | undefined): Promise<Response> {
     return fetch(url, options)
         .then(checkStatus)
         .then(parseJSON);

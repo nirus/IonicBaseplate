@@ -16,7 +16,6 @@ import {
   IonToolbar,
   IonButton
 } from '@ionic/react';
-
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -27,13 +26,14 @@ import { incrementAction, getCountriesAction } from './actions';
 import { star } from 'ionicons/icons';
 import React, { memo } from 'react';
 import './Tab1.css';
-import './style.scss';
-import { PAGE_NAME } from './constants';
+import scss from './style.module.scss';
+import { NameSpace } from './constants';
 import tab1Reducer from './reducer';
 import tab1Saga from './saga';
 import { InferMappedProps } from './types';
 
-const Tab1: React.FC<InferMappedProps> = ({eProps, ...props} : InferMappedProps) => {
+const Tab1: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps) => {
+
   return (
     <IonPage>
       <IonHeader>
@@ -53,7 +53,7 @@ const Tab1: React.FC<InferMappedProps> = ({eProps, ...props} : InferMappedProps)
 
         <IonCard className="welcome-card">
           <IonCardHeader>
-            <IonCardSubtitle>Redux data flow showcase</IonCardSubtitle>
+            <IonCardSubtitle className={scss['scss-test']}>Redux data flow showcase</IonCardSubtitle>
             <IonCardTitle>{props.counter}</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
@@ -74,15 +74,16 @@ const Tab1: React.FC<InferMappedProps> = ({eProps, ...props} : InferMappedProps)
           </IonCardHeader>
           <IonCardContent>
             <IonList lines="none">
-              <IonListHeader>List of Countries</IonListHeader>
-              {Object.entries(props.countries).map(([, value], index) =>
-                (
-                  <IonItem key={index} href="https://ionicframework.com/docs/" target="_blank">
-                    <IonIcon slot="start" color="medium" icon={star} />
-                    <IonLabel>{value as string}</IonLabel>
-                  </IonItem>
-                )
-              )}
+              <IonListHeader>List of Countries</IonListHeader>                       
+                {
+                  Object.entries(props.countries)
+                    .map(([, value], index) => (
+                      <IonItem key={index} href="https://ionicframework.com/docs/" target="_blank">
+                        <IonIcon slot="start" color="medium" icon={star} />
+                        <IonLabel>{value as string}</IonLabel>
+                      </IonItem>
+                    ))
+                }
             </IonList>
           </IonCardContent>
         </IonCard>
@@ -91,14 +92,16 @@ const Tab1: React.FC<InferMappedProps> = ({eProps, ...props} : InferMappedProps)
   );
 };
 
+/** @returns {object} Contains props from selectors */
 export const mapStateToProps = createStructuredSelector({
   counter: makeSelectCounter(),
   countries: makeSelectCountries(),
 });
 
+/** @returns {object} Contains dispatchable props */
 export function mapDispatchToProps(dispatch: any) {
   return {
-    eProps: {
+    eProps: { // eProps - Emitter proptypes thats binds to dispatch
       /** dispatch for counter to increment */
       onCount: (count: { counter: number }) => dispatch(incrementAction(count)),
       /** dispatch for get all countries */
@@ -107,10 +110,14 @@ export function mapDispatchToProps(dispatch: any) {
   };
 }
 
+/**
+ * Injects prop and saga bindings done via
+ * useInjectReducer & useInjectSaga
+ */
 const withInjectedMode = injector(
   Tab1,
   {
-    key: PAGE_NAME,
+    key: NameSpace,
     reducer: tab1Reducer,
     saga: tab1Saga
   }
