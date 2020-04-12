@@ -20,20 +20,18 @@ This boiler plate contains **React + Redux (+ immer) + Saga + Re-select** fully 
 **Use this code as base to build complex Ionic + React based apps.**
 
   
-  
-
 ## Baseplate features
 
-  
 
 - Tightly coupled with [Typescript](https://www.typescriptlang.org/) system.
 
 ![enter image description here](https://github.com/nirus/Ionic-React-Baseplate/blob/master/props.gif?raw=true)
+
 - Generator for page and component
 
 ![enter image description here](https://github.com/nirus/Ionic-React-Baseplate/blob/master/npm.gif?raw=true)
 
-----
+
 
 ## Generator Usage: 
 
@@ -41,9 +39,9 @@ This boiler plate contains **React + Redux (+ immer) + Saga + Re-select** fully 
   
 **For Component:**   `npm run gen-comp TestComponent`
 
-## Page Implementation details:
 
-  
+
+## Page Implementation details:
 
 -  `src\pages\SimplePage` : Reference implementation for a page that is followed throughout boiler plate code *(built on container concept)*
 
@@ -60,17 +58,18 @@ This boiler plate contains **React + Redux (+ immer) + Saga + Re-select** fully 
 -  `src\basplate` : Contains all the project related wiring and also APP level configurations.
 
   
-#### shared-base details - Refer [readme.md](https://github.com/nirus/Ionic-React-Baseplate/tree/master/src/shared-base) inside *shared-base* folder  
+### For `src\shared-base` folder - Refer [readme.md](https://github.com/nirus/Ionic-React-Baseplate/tree/master/src/shared-base) inside *shared-base* folder  
 
-### Suggestions 0r Comments
 
-  
+
+
+## Suggestions 0r Comments
 
 Please raise a PR or issue request for your valuable contributions and Suggestions
-
   
 
-### Goals based on community acceptance
+
+## Goals based on community acceptance
 
   
 
