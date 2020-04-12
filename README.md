@@ -1,14 +1,14 @@
-<center> 
-    <img src="https://github.com/nirus/Ionic-React-Baseplate/blob/master/baseplate-logo.png?raw=true"/>
-    <h1>Baseplate</h1>
-    <h3>[ ionic + react + redux ]</h3>
-</center>
+
+<p align="center">
+    <img src="https://github.com/nirus/Ionic-React-Baseplate/blob/master/baseplate-logo.png?raw=true">
+</p>
+<h1 align="center">Baseplate</h1>
+<h3 align="center">[ ionic + react + redux ]</h3>
+
+<hr /> 
 
 
- <hr /> 
-
-
-### Documentation:
+## Documentation:
 
 Read the [reactboilerplate](https://github.com/react-boilerplate/react-boilerplate) (motivation) documentation to understand this GIT repo. Although its not mandatory!
 
@@ -22,7 +22,7 @@ This boiler plate contains **React + Redux (+ immer) + Saga + Re-select** fully 
   
   
 
-### Baseplate features
+## Baseplate features
 
   
 
@@ -35,13 +35,13 @@ This boiler plate contains **React + Redux (+ immer) + Saga + Re-select** fully 
 
 ----
 
-### Generator Usage: 
+## Generator Usage: 
 
 **For page:**  `npm run gen-page TestPage`
   
 **For Component:**   `npm run gen-comp TestComponent`
 
-### Page Implementation details:
+## Page Implementation details:
 
   
 
