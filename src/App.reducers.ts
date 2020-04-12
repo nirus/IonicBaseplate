@@ -2,8 +2,8 @@
  * This is the main state tree
  */
 import produce from 'immer';
-import { APP_ACTION } from './common/models';
-import { APP_CONST } from './common/constants';
+import { APP_ACTION } from './baseplate/models';
+import { APP_CONST } from './baseplate/constants';
 
 
 // The initial state of the App

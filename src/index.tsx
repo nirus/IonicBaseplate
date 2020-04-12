@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import configureStore from './common/configureStore';
-import history from './common/history';
+import configureStore from './baseplate/configureStore';
+import history from './baseplate/history';
 
 const initialState = {}; // Empty | LocalStorage | SessionStorage
 const store = configureStore(initialState, history);
