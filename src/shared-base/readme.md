@@ -15,7 +15,7 @@ Goal of this folder is to create a common point for the sharable logics & api's 
 
     - Create & use `xfectapi` folder to place all your AJAX composed files inside & exposing api's via `index.ts`- This is kindof *common service layer*. Although we encourage all pages should have its own network calls `fetchapi.ts`
 
-    - Create & use `xconstants` folder to place all constants **( Stick with one file for *constants* as much as possible by creating toplevel single file ***xconstanst.js*** )**
+    - Create & use `xconstants` folder to place all constants **( Stick with one file for *constants* as much as possible by creating toplevel single file ***xconstants.ts*** )**
 
     - Create & use `xcommon` folder to place all your common - data objects, common utilities, interfaces etc, and exposing api's via `index.ts`.
 
