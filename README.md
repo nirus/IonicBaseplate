@@ -50,7 +50,7 @@ Clone the repository and run below commands
 | Options \ Object | Details |
 |---|---|
 | `eProps` | Emiter props *(differentiated from normal props)*, used to emit actions to the reducer or middleware from the container. |
-| `action` | object that carries the data within a components |
+| `action` | object that carries the data in a component |
 | `reducer` | is implemented using [**immer.js**](https://github.com/immerjs/immer), a draft based state manipulation. |
 | `SASS` | (***style.module.scss***) module based for the classname hashing & namespace collision prevention. |
 
@@ -60,7 +60,7 @@ Clone the repository and run below commands
 |---|---|---|
 | type | String | Unique string for each page or container. It should be unique across the application.
 | payLoad | String / Object | Data payload carrier for component to middleware and vice versa
-| meta | Sunction / String / Object | Any data directly to be sent to middlewares and vice versa without putting to global store. ex: function callback |
+| meta | Function / String / Object | Any data directly to be sent to middlewares and vice versa without putting to global store. ex: function callback |
 
 ## Repo inspired by
 
