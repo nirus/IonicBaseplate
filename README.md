@@ -18,6 +18,8 @@
 
 - Well suited for **PWA**, **Apache Cordova or Electron** based applications.
 
+- Out of the box lazy-loading components and pages.
+
 - Tightly coupled with [Typescript](https://www.typescriptlang.org/) system.
 
 ![enter image description here](https://github.com/nirus/Ionic-React-Baseplate/blob/master/props.gif?raw=true)
