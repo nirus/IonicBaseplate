@@ -1,5 +1,5 @@
 
-# About *shared-base* folder
+# Usage for *shared-base* folder
 
 Goal of this folder is to create a common point for the sharable logics & api's that can be seamlessly used across the project. Please follow the below rules when you put your code or file inside **shared-base** folder.
 
@@ -13,13 +13,13 @@ Goal of this folder is to create a common point for the sharable logics & api's 
 
 2. If you have multiple files to be shared across the app by design. Follow SOC - [Seperation Of Concern](https://en.wikipedia.org/wiki/Separation_of_concerns) using folder structure.
 
-- Create & use `xfectapi` folder to place all your AJAX composed files inside & exposing api's via `index.ts`- This is kindof *common service layer*. Although we encourage all pages should have its own network calls `fetchapi.ts`
+    - Create & use `xfectapi` folder to place all your AJAX composed files inside & exposing api's via `index.ts`- This is kindof *common service layer*. Although we encourage all pages should have its own network calls `fetchapi.ts`
 
-- Create & use `xconstants` folder to place all constants **( Stick with one file for *constants* as much as possible )**
+    - Create & use `xconstants` folder to place all constants **( Stick with one file for *constants* as much as possible )**
 
-- Create & use `xcommon` folder to place all your common - data objects, common utilities, interfaces etc, and exposing api's via `index.ts`.
+    - Create & use `xcommon` folder to place all your common - data objects, common utilities, interfaces etc, and exposing api's via `index.ts`.
 
-- Naming conventions for the files that are placed inside these above said folders are developer's choice.
+    - Naming conventions for the files that are placed inside these above said folders are developer's choice.
 
 3. If you want to share common fetch api ( AJAX network calls ) that are already written inside **pages**, you can import those methods to `shared-base/x-fetchapi/index.ts` and **export** it for common use.
 4. For tescase spec creation use `test` folder to place all your test cases.
