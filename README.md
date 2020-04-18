@@ -8,7 +8,7 @@
 
 # Documentation:
 
- Scaffold your project **using React + Redux (+ immer) + Saga + Re-select** fully written in [typescript](https://www.typescriptlang.org/)
+ Scaffold your project using **React + Redux (+ immer) + Saga** fully written in [typescript](https://www.typescriptlang.org/)
   
   
 **Enjoy building complex Ionic + React based apps.**
@@ -64,7 +64,7 @@ Clone the repository and run below commands
 
 ## Repo inspired by
 
-[ReactBoilerplate](https://github.com/react-boilerplate/react-boilerplate)
+🔥 [ReactBoilerplate](https://github.com/react-boilerplate/react-boilerplate)
 
 ## Suggestions 0r Comments
 
