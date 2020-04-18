@@ -5,8 +5,6 @@
 <h1 align="center">Baseplate</h1>
 <h3 align="center">[ ionic + react + redux ]</h3>
 
-<hr /> 
-
 
 ## Documentation:
 
