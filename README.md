@@ -16,6 +16,7 @@
   
 ## Baseplate features
 
+- Well suited for **PWA**, **Apache Cordova or Electron** based applications.
 
 - Tightly coupled with [Typescript](https://www.typescriptlang.org/) system.
 
@@ -25,7 +26,6 @@
 
 ![enter image description here](https://github.com/nirus/Ionic-React-Baseplate/blob/master/npm.gif?raw=true)
 
-- Well suited for **PWA** or **Apache Cordova**. based applications.
 
 ## Usage: 
 
