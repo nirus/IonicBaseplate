@@ -8,10 +8,10 @@
 
 # Documentation:
 
- **Boilerplate using React + Redux (+ immer) + Saga + Re-select** fully written in [typescript](https://www.typescriptlang.org/)
+ Scaffold your project **using React + Redux (+ immer) + Saga + Re-select** fully written in [typescript](https://www.typescriptlang.org/)
   
   
-**Use this code as base to build complex Ionic + React based apps.**
+**Enjoy building complex Ionic + React based apps.**
 
   
 ## Baseplate features
@@ -73,7 +73,7 @@ Please raise a PR or issue request for your valuable contributions and Suggestio
 
 ## Roadmaps
 
-- Translation (i18n support) - Tweaks needed
-- Baseplate without Redux and Saga 
+- Translation (i18n support) - *Tweaks needed*
+- Boilerplate code without Redux and Saga 
 - Adding more options to generator
 - Support for React Native
