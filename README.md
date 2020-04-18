@@ -8,7 +8,7 @@
 
 # Documentation:
 
- Scaffold your project using **React + Redux (+ immer) + Saga** fully written in [typescript](https://www.typescriptlang.org/)
+ Scaffold your project using **Ionic Framework + React.js + Redux.js (+ immer.js + Redux-Saga + Re-Select)** fully written in [typescript](https://www.typescriptlang.org/)
   
   
 **Enjoy building complex Ionic + React based apps.**
