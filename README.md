@@ -13,6 +13,7 @@
   
 **Enjoy building complex Ionic + React based apps.**
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat&logo=github)](https://github.com/nirus/Ionic-React-Baseplate/pulls) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/nirus/Ionic-React-Baseplate)
   
 ## Baseplate features
 
