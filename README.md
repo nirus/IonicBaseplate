@@ -59,7 +59,7 @@ Clone the repository and run below command on the root of your project.
 | Options \ Object | Details |
 |---|---|
 | `eProps` | Emiter props *(differentiated from normal props)*, used to emit actions to the reducer or middleware from the container. |
-| `action` | object that carries the data in a component |
+| [`action`](#action-object) | object that carries the data in a component |
 | `reducer` | is implemented using [**immer.js**](https://github.com/immerjs/immer), a draft based state manipulation. |
 | `SASS` | (***style.module.scss***) module based for the classname hashing & namespace collision prevention. |
 
