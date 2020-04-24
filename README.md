@@ -34,7 +34,9 @@
 
 Clone the repository and run below command on the root of your project. 
 
-**command :** `npm i`
+ `npm i`
+ 
+ `ionic serve`
 
 ## CLi for page & component generation
 
