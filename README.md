@@ -59,7 +59,7 @@ Clone the repository and run below command on the root of your project.
 | Options \ Object | Details |
 |---|---|
 | [`eProps`](https://github.com/nirus/Ionic-React-Baseplate/blob/7ae9269e54010ede9db46a4fa9e349c5f97c9da5/src/pages/SimplePage/index.tsx#L102) | Emiter props *(differentiated from normal props)*, used to emit actions to the reducer or middleware from the container. |
-| [`action`](#action-object) | object that carries the data in a component |
+| [`action`](#action-object---source) | object that carries the data in a component |
 | [`reducer`](https://github.com/nirus/Ionic-React-Baseplate/blob/7ae9269e54010ede9db46a4fa9e349c5f97c9da5/src/pages/SimplePage/reducer.ts#L16) | is implemented using [**immer.js**](https://github.com/immerjs/immer), a draft based state manipulation. |
 | [`SCSS`](https://github.com/nirus/Ionic-React-Baseplate/blob/master/src/pages/SimplePage/style.module.scss) | (***style.module.scss***) module based for the classname hashing & namespace collision prevention. |
 
