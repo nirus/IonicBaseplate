@@ -32,7 +32,11 @@
 
 ## Usage: 
 
-Clone the repository and run below commands
+Clone the repository and run below command on the root of your project. 
+
+**command :** `npm i`
+
+## CLi for page & component generation
 
 **For page:**  `npm run gen-page TestPage`
   
