@@ -5,7 +5,7 @@
   "dependencies": {
     "connected-react-router": "^6.6.1",
     "hoist-non-react-statics": "^3.3.1",
-    "immer": "^5.0.0",
+    "immer": "^8.0.1",
     "invariant": "^2.2.4",
     "ionicons": "^4.6.3",
     "node-sass": "^4.13.1",
