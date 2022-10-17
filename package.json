@@ -60,7 +60,7 @@
     "@types/react-router-dom": "^5.1.0",
     "@types/webpack-env": "^1.15.0",
     "fs-extra": "^9.0.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "tslint-react": "^4.1.0"
   }
 }
