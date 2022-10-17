@@ -8,7 +8,7 @@
     "immer": "^9.0.6",
     "invariant": "^2.2.4",
     "ionicons": "^4.6.3",
-    "node-sass": "^7.0.0",
+    "node-sass": "^7.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.10.2",
     "react-intl": "^3.11.0",
